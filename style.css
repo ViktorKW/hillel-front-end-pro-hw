@@ -1,0 +1,41 @@
+body {
+  background-color: blue;
+}
+
+.main-content {
+  background-color: white;
+  padding: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.error {
+  border: 2px solid red;
+}
+
+#error-text {
+  display: none;
+  color: red;
+  padding: 0;
+  margin: 0;
+  margin-top: 5px;
+}
+
+#to-do-list {
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#to-do-list li {
+  padding-left: 0;
+  margin-left: 0;
+  background-color: lightblue;
+  list-style-type: none;
+  margin-left: -2.5em;
+}
+
+#to-do-list li p {
+  margin-left: 5%;
+  margin-right: 5px;
+}
