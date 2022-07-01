@@ -1,0 +1,24 @@
+div {
+  margin-bottom: 50px;
+}
+
+a {
+  display: block;
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 20px;
+  font-weight: bold;
+}
+table {
+  border: 3px solid black;
+}
+td {
+  border: 3px solid black;
+}
+
+img {
+  height: 1280/2px;
+  width: 960/2px;
+}
