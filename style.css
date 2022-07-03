@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+.slider {
+  display: flex;
+}
+.slider-viewport {
+  overflow: hidden;
+}
+
+.slider-list-transform {
+  display: flex;
+  transition: 0.3s;
+}
+
+.slider button {
+  align-self: center;
+  padding: 15px;
+  font-size: larger;
+  font-weight: bolder;
+  background-color: black;
+  color: white;
+}
+
+img {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.box-container {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  background-color: grey;
+  width: 10%;
+  height: 10px;
+  margin-right: 1%;
+}
+
+.selected-box {
+  background-color: black;
+}
