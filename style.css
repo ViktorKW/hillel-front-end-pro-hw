@@ -1,0 +1,14 @@
+* {
+  box-sizing: border-box;
+}
+.content {
+  background-color: white;
+}
+.main-form input {
+  margin-right: 1%;
+  background-color: aquamarine;
+}
+
+.error {
+  border: 2px solid red;
+}
