@@ -15,7 +15,7 @@ function userEmailRequirementError(field_id) {
 }
 
 user_email.addEventListener("input", function () {
-  if (this.value.match(/(?![@.])\W|[A-Z]|[0-9]/)) {
+  if (this.value.match(/(?![@.])\W|[A-Z]|[0-9]/)) {             //?! - regular expression
     userEmailRequirementError(0);
   } else {
     userEmailRequirementCorrect(0);
