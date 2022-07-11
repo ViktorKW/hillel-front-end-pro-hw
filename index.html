@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <form class="main-form">
+        
+        <label for="user-name">Name: </label>
+        <input type="text" name="user-name" required>
+        <ul class="user-name-requirements">
+          <li class="requirement">Alphabet characters only</li>
+          <li class="requirement">Maximum length: 16 characters</li>
+          <li class="requirement">Minimum length: 2 characters</li>
+        </ul>
+
+        <label for="user-phone">Mobile phone:</label>
+        <input type="tel" name="user-phone" required>
+        <ul class="user-phone-requirements">
+          <li class="requirement">Numbers only (excluding "+" in the beginning)</li>
+          <li class="requirement">Must start with +380</li>
+          <li class="requirement">Must be 13 characters long</li>
+        </ul>
+
+        <label for="user-email">Email: </label>
+        <input type="text" name="user-email" required>
+        <ul class="user-email-requirements">
+          <li class="requirement">English characters only (excluding @ and .)</li>
+          <li class="requirement">Email format: name@domain</li>
+        </ul>
+
+        <label for="user-credit">Credit card number: </label>
+        <input type="tel" name="user-credit" required>
+        <ul class="user-credit-requirements">
+          <li class="requirement">Must be 16 numbers long</li>
+        </ul>
+
+        <input type="submit" value="Submit">
+      </form>
+      <script src="main_form.js"></script>
+      <script src="user_name.js"></script>
+      <script src="user_phone.js"></script>
+      <script src="user_email.js"></script>
+      <script src="user_credit.js"></script>
+    </body>
+    </div>
+</html>

@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+.main-form input {
+  display: block;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+
+.red-border {
+  border: 3px solid red;
+}
