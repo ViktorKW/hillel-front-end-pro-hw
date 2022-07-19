@@ -18,43 +18,43 @@ function add_boxes() {
     new_box.classList.add("box");
     new_box.index = i;
     new_box.addEventListener("click", function () {
-      boxes_list[index].classList.remove("selected-box");
-      index = this.index;
-      boxes_list[index].classList.add("selected-box");
-      sliderTransform();
-      lock_unlock_btn();
+      moveSlider(this.index);
     });
     box_container.appendChild(new_box);
   }
   box_container.firstChild.classList.add("selected-box");
 }
 
-function lock_unlock_btn() {
-  if (index == images_amount - 1) {
-    btn_next.disabled = true;
-    btn_prev.disabled = false;
-  } else if (index == 0) {
-    btn_next.disabled = false;
-    btn_prev.disabled = true;
-  } else {
-    btn_next.disabled = false;
-    btn_prev.disabled = false;
-  }
+let interval = null;
+function moveSlider(new_index) {
+  boxes_list[index].classList.remove("selected-box");
+  index = new_index;
+  boxes_list[index].classList.add("selected-box");
+  sliderTransform();
+
+  clearInterval(interval);
+  interval = setInterval(function () {
+    if (index == images_amount - 1) {
+      moveSlider(0);
+    } else {
+      moveSlider(index + 1);
+    }
+  }, 5000);
 }
 
 btn_prev.addEventListener("click", function () {
-  boxes_list[index].classList.remove("selected-box");
-  index--;
-  boxes_list[index].classList.add("selected-box");
-  sliderTransform();
-  lock_unlock_btn();
+  if (index == 0) {
+    moveSlider(images_amount - 1);
+  } else {
+    moveSlider(index - 1);
+  }
 });
 btn_next.addEventListener("click", function () {
-  boxes_list[index].classList.remove("selected-box");
-  index++;
-  boxes_list[index].classList.add("selected-box");
-  sliderTransform();
-  lock_unlock_btn();
+  if (index == images_amount - 1) {
+    moveSlider(0);
+  } else {
+    moveSlider(index + 1);
+  }
 });
 
 function sliderTransform() {
