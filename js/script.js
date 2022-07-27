@@ -16,7 +16,7 @@ $(document).ready(function () {
     pauseOnHover: false,
     loop: true,
     slideEndAnimation: true,
-    pause: 3000,
+    pause: 5000,
 
     keyPress: false,
     controls: true,
