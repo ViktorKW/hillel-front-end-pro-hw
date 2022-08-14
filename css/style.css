@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+
+form {
+  margin: 5px;
+}
+
+label {
+  font-weight: bolder;
+}
+
+input {
+  margin: 5px;
+}
+
+.post {
+  background-color: teal;
+  color: white;
+}
