@@ -10,6 +10,18 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "lightslider": "^1.1.6"
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^8.0.0",
+    "gulp-sass": "^5.1.0",
+    "gulp-src": "^1.0.0",
+    "lightslider": "^1.1.6",
+    "sass": "^1.54.4",
+    "src": "^1.1.2"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-uglify": "^3.0.2"
   }
 }
