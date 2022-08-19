@@ -36,4 +36,4 @@ function minHtml(cb) {
     .pipe(dest("dist"));
   cb();
 }
-exports.default = series(minCSS, minJS, minImg, minHtml);
+exports.default = series(minCSS, minJS, minImg);
