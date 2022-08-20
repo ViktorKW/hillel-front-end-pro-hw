@@ -1,39 +1,55 @@
-const { src, dest, series } = require("gulp");
+const gulp = require("gulp");
+const { src, dest, watch, series } = require("gulp");
+const sass = require("gulp-sass")(require("sass"));
 const concat = require("gulp-concat");
 const uglify = require("gulp-uglify");
 const imagemin = require("gulp-imagemin");
-const htmlmin = require("gulp-htmlmin");
+const browserSync = require("browser-sync");
 
-function minCSS(cb) {
-  src(["src/css/*.css", "node_modules/lightslider/dist/css/lightslider.css"])
-    .pipe(concat("style.min.css"))
-    .pipe(dest("dist/css/"));
+function browserSyncServer(cb) {
+  browserSync.init({
+    server: {
+      baseDir: ".",
+    },
+  });
   cb();
 }
 
-function minJS(cb) {
-  src([
-    "node_modules/lightslider/dist/js/lightslider.js",
-    "src/js/*.js",
+function browserSyncReload(cb) {
+  browserSync.reload();
+  cb();
+}
+
+function watchTask() {
+  watch("*.html", browserSyncReload);
+  watch(["scss/*.scss", "js/*.js"], series(minCSS, minJS, browserSyncReload));
+}
+
+function minCSS() {
+  return src([
+    "scss/*.scss",
+    "node_modules/lightslider/dist/css/lightslider.css",
+  ])
+    .pipe(sass().on("error", sass.logError))
+    .pipe(concat("style.min.css"))
+    .pipe(gulp.dest("dist/css"));
+}
+
+function minJS() {
+  return src([
     "node_modules/jquery/dist/jquery.js",
+    "node_modules/lightslider/dist/js/lightslider.js",
+    "js/*.js",
   ])
     .pipe(concat("script.min.js"))
     .pipe(uglify())
     .pipe(dest("dist/js/"));
-  cb();
 }
 
-function minImg(cb) {
-  src(["src/img/*", "node_modules/lightslider/dist/img/*"])
+function minImg() {
+  return src(["img/*", "node_modules/lightslider/dist/img/*"])
     .pipe(imagemin())
     .pipe(dest("dist/img"));
-  cb();
 }
 
-function minHtml(cb) {
-  src("src/*.html")
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(dest("dist"));
-  cb();
-}
-exports.default = series(minCSS, minJS, minImg);
+exports.default = series(minCSS, minJS, minImg, browserSyncServer, watchTask);
