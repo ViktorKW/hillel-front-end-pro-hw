@@ -1,0 +1,17 @@
+.user-form input {
+  display: block;
+  margin-bottom: 5px;
+}
+.user-form-edit .btn-cancel {
+  display: inline;
+}
+/* .btn-submit-edit {
+  display: block;
+}
+.btn-cancel {
+  display: inline;
+} */
+
+li {
+  margin-bottom: 5px;
+}

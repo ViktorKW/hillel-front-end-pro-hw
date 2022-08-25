@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form class="user-form">
+      <label for="name">Name:</label>
+      <input type="text" name="name" required />
+
+      <label for="surname">Surname:</label>
+      <input type="text" name="surname" required />
+
+      <label for="age">Age:</label>
+      <input type="number" min="0" max="100" name="age" required />
+
+      <input type="submit" value="Submit" />
+    </form>
+    <ul id="users-list"></ul>
+    <script src="js/script.js"></script>
+  </body>
+</html>
