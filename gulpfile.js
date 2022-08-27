@@ -7,6 +7,10 @@ function browserSyncServer(cb) {
     server: {
       baseDir: ".",
     },
+    port: 8030,
+    ui: {
+      port: 8031,
+    },
   });
   cb();
 }
