@@ -1,4 +1,4 @@
-const users_form = document.querySelector("form");
+const users_form = document.querySelector("form");           //!!!Прога падает из-за nodemon на любом fetch запросе (строки: 4, 23, 63, 109)
 const users_list = document.querySelector("#users-list");
 
 fetch("http://localhost:3000/users")
