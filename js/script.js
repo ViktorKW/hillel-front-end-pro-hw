@@ -51,7 +51,7 @@ function addedUser(user) {
                 <label for="age">Age:</label>
                 <input type="number" min="0" max="100" name="age"  required />
 
-                <input type="submit" value="Submit" onclick = "submitUserClick(this)"/>
+                <input type="submit" value="Submit" onclick = "submitUserClick(this, event)"/>
                 <input type ="button" class="btn-cancel" value = "Cancel" onclick = "cancelUserClick(this)"/>
               </form>
             </div>
@@ -93,7 +93,8 @@ function cancelUserClick(target) {
   user_info.hidden = false;
 }
 
-function submitUserClick(target) {
+function submitUserClick(target, ev) {
+  ev.preventDefault();
   const parent_li = target.closest("li");
   const user_id = JSON.parse(parent_li.attributes["user-data"].value).id;
 
