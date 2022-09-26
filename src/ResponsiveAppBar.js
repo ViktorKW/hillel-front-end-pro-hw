@@ -25,10 +25,16 @@ const ResponsiveAppBar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-  const linkStyle = {
+  const linkBaseStyle = {
     color: "white",
     textDecoration: "none",
   };
+
+  const linkMenuStyle = {
+    color: "black",
+    textDecoration: "none",
+  };
+
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -84,7 +90,10 @@ const ResponsiveAppBar = () => {
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
-                    <Link to={`/${page}`} style={linkStyle}>
+                    <Link
+                      to={`/${page === "Home" ? "" : page}`}
+                      style={linkMenuStyle}
+                    >
                       {page}
                     </Link>
                   </Typography>
@@ -97,7 +106,7 @@ const ResponsiveAppBar = () => {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
@@ -118,7 +127,10 @@ const ResponsiveAppBar = () => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
-                <Link to={`/${page}`} style={linkStyle}>
+                <Link
+                  to={`/${page === "Home" ? "" : page}`}
+                  style={linkBaseStyle}
+                >
                   {page}
                 </Link>
               </Button>

@@ -1,7 +1,10 @@
 function About() {
   return (
     <div className="About">
-      <h1>About ME</h1>
+      <h1>All about ME:</h1>
+      <ol>
+        <li>...</li>
+      </ol>
     </div>
   );
 }
