@@ -6,7 +6,7 @@
 // 5) in setTimeout4 потому что имеет таймер 1000 и в коде по порядку идёт после  Promise 3
 // 6) in Promise 2 потому что имеет таймер 2000
 // 7) in setTimeout3 потому что имеет таймер 2000 и в коде по порядку идёт после  Promise 2
-// 7) in Promise потому что имеет таймер 5000
+// 8) in Promise потому что имеет таймер 5000
 
 const myPromise = (delay) =>
   new Promise((res, rej) => {
