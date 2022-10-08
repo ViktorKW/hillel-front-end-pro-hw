@@ -11,16 +11,22 @@
     <div class="core-page">
       <header class="header-content">
         <h1 class="title">Pokemons!</h1>
-        <!-- <div class="nav-bar">
+        <div class="nav-bar">
           <button class="nav-btn" onclick="ShowAllPokemons()">
             Show All Pokemons
           </button>
-        </div> -->
+          <button class="nav-btn" onclick="ShowAllPokemons()">
+            Show All Evolutions
+          </button>
+          <button class="nav-btn" onclick="ShowAllPokemons()">
+            Show All Locations
+          </button>
+        </div>
       </header>
 
       <div class="main-content">
         <div class="content-navigation">
-          <h5 class="title">All pokemons</h5>
+          <h3 class="title">All pokemons</h3>
           <hr />
           <ol class="items-list"></ol>
           <div class="pagination">
@@ -33,6 +39,8 @@
       </div>
     </div>
     <script src="./js/fetchData.js"></script>
+    <script src="./js/pagination.js"></script>
+    <script src="./js/drawPokemonInfo.js"></script>
     <script src="./index.js"></script>
   </body>
 </html>

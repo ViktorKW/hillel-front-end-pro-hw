@@ -68,7 +68,7 @@
 
 .item {
   margin: 2px;
-  font-size: smaller;
+  font-size: 16px;
 }
 
 .pagination {
@@ -77,18 +77,22 @@
   justify-content: space-between;
 }
 
+.pokemon-info-inner-container {
+  display: flex;
+}
+
 .pokemon-imgs-container {
   padding: 1px;
   background-color: black;
   display: flex;
 }
 
-.big_pokemon_pic-container {
+.big-pokemon-pic-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.big_pokemon_pic-container .big_pokemon_pic {
+.big-pokemon-pic-container .big-pokemon-pic {
   width: 200px;
   height: 200px;
   background-color: azure;
@@ -104,4 +108,13 @@
 .pokemon-sprites-container li {
   background-color: azure;
   margin-left: 1px;
+}
+
+.pokemon-stats-list {
+  list-style: none;
+  margin-left: 5px;
+}
+
+.pokemon-stats-list li {
+  font-size: 20px;
 }
