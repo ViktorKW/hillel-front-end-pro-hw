@@ -49,13 +49,13 @@
   padding: 10px;
 }
 
-.pokemon-info {
+.content-info {
   width: max-content;
   padding: 5px;
   margin: 5px;
 }
 
-.pokemon-info-header {
+.info-header {
   background-color: #293349;
   color: #feca1b;
   margin-bottom: 10px;
@@ -77,7 +77,7 @@
   justify-content: space-between;
 }
 
-.pokemon-info-inner-container {
+.info-inner-container {
   display: flex;
 }
 
