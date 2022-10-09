@@ -1,9 +1,3 @@
-const pokemon_info = document.querySelector(".pokemon-info");
-
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 function createItem({ name, url }) {
   const li = document.createElement("li");
   li.classList.add("item");
@@ -18,5 +12,16 @@ function createItem({ name, url }) {
   });
 
   li.appendChild(a);
-  items_list.appendChild(li);
+  return li;
+}
+
+function drawContentNavigation(url) {
+  fetchData(url, (data) => {
+    const items = data.results.map((element) => createItem(element));
+
+    items_list.innerHTML = "";
+    items.forEach((item) => {
+      items_list.appendChild(item);
+    });
+  });
 }
