@@ -25,3 +25,18 @@ function drawContentNavigation(url) {
     });
   });
 }
+
+fetchData(`https://pokeapi.co/api/v2/evolution-chain`, () => {});
+fetchData(`https://pokeapi.co/api/v2/evolution-chain/1`, () => {});
+
+// getPokemonChain(`https://pokeapi.co/api/v2/evolution-chain`);
+
+function drawContentNavigationEvolution(url) {
+  fetchData(url, (data) => {
+    // const items = data.results.map((element) => createChaineItem(element));
+    // items_list.innerHTML = "";
+    // items.forEach((item) => {
+    //   items_list.appendChild(item);
+    // });
+  });
+}
