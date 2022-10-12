@@ -19,22 +19,35 @@ function createNextBtn() {
   return next_btn;
 }
 
-function initPagination() {
-  page_index = 0;
+function setItemsCount(key) {
   fetchData(`${default_url}/pokemon`, (data) => {
     items_count = data.count;
   });
+}
+
+function drawNavigationByKey(key) {
+  let url = `${default_url}/${key}/?offset=${
+    page_index * page_size
+  }&limit=${page_size}`;
+
+  if (key === "pokemon") {
+    drawContentNavigation(url);
+  } else if (key === "evolution-chain") {
+    drawContentNavigationEvolution(url);
+  }
+}
+
+function initPagination(key) {
+  page_index = 0;
+  setItemsCount(key);
 
   const prev_btn = createPrevBtn();
   const next_btn = createNextBtn();
 
   prev_btn.addEventListener("click", () => {
     page_index -= 1;
-    drawContentNavigation(
-      `${default_url}/pokemon/?offset=${
-        page_index * page_size
-      }&limit=${page_size}`
-    );
+
+    drawNavigationByKey(key);
 
     if (page_index * page_size === 0) {
       next_btn.disabled = false;
@@ -46,11 +59,8 @@ function initPagination() {
 
   next_btn.addEventListener("click", () => {
     page_index += 1;
-    drawContentNavigation(
-      `${default_url}/pokemon/?offset=${
-        page_index * page_size
-      }&limit=${page_size}`
-    );
+
+    drawNavigationByKey(key);
 
     if (page_index * page_size >= items_count) {
       next_btn.disabled = true;

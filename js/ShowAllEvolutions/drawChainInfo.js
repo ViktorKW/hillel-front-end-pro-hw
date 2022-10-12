@@ -12,7 +12,7 @@ function drawChainInfo(pokemon_names) {
   const chain_info = ` 
   <div class = "info">
     <header class ="info-header">
-      <h3>${capitalizeFirstLetter(pokemon_names[0])} evolution chain</h3>
+      <h3>${capitalizeFirstLetter(pokemon_names[0])}'s evolution chain</h3>
     </header>
     <div class="info-inner-container">
       <div class ="pokemon-imgs-container">
@@ -25,6 +25,7 @@ function drawChainInfo(pokemon_names) {
   const chain_pics = document.querySelector(".pokemon-imgs-container");
 
   //performs the code asynchronous, disrupting correct picture order
+  //setTimeout won't resolve the issue
   pokemon_names.forEach((name) => {
     fetchData(`${default_url}/pokemon/${name}`, (pokemon) => {
       chain_pics.innerHTML += ` <div class="big-pokemon-pic-container">
