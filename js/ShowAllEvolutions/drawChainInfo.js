@@ -24,14 +24,23 @@ function drawChainInfo(pokemon_names) {
 
   const chain_pics = document.querySelector(".pokemon-imgs-container");
 
-  //performs the code asynchronous, disrupting correct picture order
-  //setTimeout won't resolve the issue
-  pokemon_names.forEach((name) => {
-    fetchData(`${default_url}/pokemon/${name}`, (pokemon) => {
+  let promise_array = pokemon_names.map((name) =>
+    fetch(`${default_url}/pokemon/${name}`).then((res) => res.json())
+  );
+  console.log(promise_array);
+  Promise.all(promise_array).then((pokemons) =>
+    pokemons.forEach((pokemon) => {
       chain_pics.innerHTML += ` <div class="big-pokemon-pic-container">
           <h3 style="color:white; text-align: center">${pokemon.name}</h3>
           <img class ="big-pokemon-pic" src = ${pokemon.sprites.front_default} />
         </div>`;
-    });
-  });
+    })
+  );
 }
+
+// fetchData(`${default_url}/pokemon/${name}`, (pokemon) => {
+//   chain_pics.innerHTML += ` <div class="big-pokemon-pic-container">
+//       <h3 style="color:white; text-align: center">${pokemon.name}</h3>
+//       <img class ="big-pokemon-pic" src = ${pokemon.sprites.front_default} />
+//     </div>`;
+// });

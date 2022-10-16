@@ -1,40 +1,58 @@
 const show_all_pokemons_btn = document.querySelector(".show-all-pokemons");
 
-show_all_pokemons_btn.addEventListener("click", () => {
+function showPokemons() {
   navigation_title.innerHTML = "All Pokemons";
 
-  drawContentNavigation(`${default_url}/pokemon/`);
+  drawNavigation(`${default_url}/pokemon/`, createNavItem, drawPokemonInfo);
   drawPokemonInfo(`${default_url}/pokemon/1`);
 
-  initPagination(keys[0]); //wanted to do keys["pokemon"] but didn't work
+  initPagination("pokemon");
+}
+
+show_all_pokemons_btn.addEventListener("click", () => {
+  showPokemons();
 });
 
 const show_all_evolutions_btn = document.querySelector(".show-all-evolutions");
 
 show_all_evolutions_btn.addEventListener("click", () => {
   navigation_title.innerHTML = "All Evolution Chains";
-  drawContentNavigationEvolution(`${default_url}/evolution-chain/`);
+  drawEvolutionNavigation(`${default_url}/evolution-chain/`);
   drawChainInfo(["bulbasaur", "ivysaur", "venusaur"]);
 
-  initPagination(keys[1]); //wanted to do keys["evolution-chain"] but didn't work
+  initPagination("evolution-chain");
 });
 
 const show_all_regions_btn = document.querySelector(".show-all-regions");
 
 show_all_regions_btn.addEventListener("click", () => {
   navigation_title.innerHTML = "All regions";
-  drawContentNavigation(`${default_url}/region/`);
-  content_info.innerHTML = "Coming Soon!";
+  content_info.innerHTML = `Region Description Coming Soon!`;
+  drawNavigation(`${default_url}/region/`, createNavItem, (url) => {
+    content_info.innerHTML = `Region Description Coming Soon!`;
+  });
+
   pagination.innerHTML = "";
 });
 
-navigation_title.innerHTML = "All Pokemons";
+const show_all_types_btn = document.querySelector(".show-all-types");
 
-drawContentNavigation(`${default_url}/pokemon/`);
-drawPokemonInfo(`${default_url}/pokemon/1`);
+show_all_types_btn.addEventListener("click", () => {
+  navigation_title.innerHTML = "All types";
+  content_info.innerHTML = "";
+  drawNavigation(`${default_url}/type/`, createNavItem, (url) => {
+    content_info.innerHTML = "";
+    fetchData(url, ({ pokemon }) => {
+      pokemon.forEach((item, i) => {
+        content_info.innerHTML += `<h4>${i}) ${item.pokemon.name}</h4>`;
+      });
+    });
+  });
 
-initPagination(keys[0]); //wanted to do keys["pokemon"] but didn't work
+  pagination.innerHTML = "";
+});
 
-fetchData("https://pokeapi.co/api/v2/type/1", () => {});
-// fetchData("https://pokeapi.co/api/v2/region", () => {});
-// fetchData("https://pokeapi.co/api/v2/region/1", () => {});
+showPokemons();
+
+// fetchData("https://pokeapi.co/api/v2/type", () => {});
+fetchData("https://pokeapi.co/api/v2/type/2", () => {});

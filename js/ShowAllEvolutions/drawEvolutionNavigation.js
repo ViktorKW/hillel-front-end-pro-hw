@@ -9,8 +9,7 @@ function createChainItem(chain) {
 
   a.addEventListener("click", (e) => {
     const chain = JSON.parse(e.target.chain);
-    const pokemon_names = loopChain(chain).slice(0, -1).split(" "); // had to remove last element from loopChain(chain) result string... Bad coding practise...
-
+    const pokemon_names = loopChain(chain).slice(0, -1).split(" ");
     drawChainInfo(pokemon_names);
   });
 
@@ -18,7 +17,7 @@ function createChainItem(chain) {
   return li;
 }
 
-function drawContentNavigationEvolution(base_url) {
+function drawEvolutionNavigation(base_url) {
   fetchData(base_url, ({ results }) => {
     items_list.innerHTML = "";
     results.forEach(({ url }) => {

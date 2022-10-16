@@ -31,9 +31,9 @@ function drawNavigationByKey(key) {
   }&limit=${page_size}`;
 
   if (key === "pokemon") {
-    drawContentNavigation(url);
+    drawNavigation(url, createNavItem, drawPokemonInfo);
   } else if (key === "evolution-chain") {
-    drawContentNavigationEvolution(url);
+    drawEvolutionNavigation(url);
   }
 }
 

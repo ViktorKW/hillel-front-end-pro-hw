@@ -1,4 +1,4 @@
-function createPokemonItem({ name, url }) {
+function createNavItem({ name, url }, drawContentCallback) {
   const li = document.createElement("li");
   li.classList.add("item");
 
@@ -8,16 +8,18 @@ function createPokemonItem({ name, url }) {
   a.href = "#";
 
   a.addEventListener("click", (e) => {
-    drawPokemonInfo(e.target.url);
+    drawContentCallback(e.target.url);
   });
 
   li.appendChild(a);
   return li;
 }
 
-function drawContentNavigation(url) {
+function drawNavigation(url, drawNavItemsCallback, drawContentCallback) {
   fetchData(url, (data) => {
-    const items = data.results.map((element) => createPokemonItem(element));
+    const items = data.results.map((element) =>
+      drawNavItemsCallback(element, drawContentCallback)
+    );
 
     items_list.innerHTML = "";
     items.forEach((item) => {
