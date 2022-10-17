@@ -11,6 +11,15 @@ function createChainItem(chain) {
     const chain = JSON.parse(e.target.chain);
     const pokemon_names = loopChain(chain).slice(0, -1).split(" ");
     drawChainInfo(pokemon_names);
+
+    const all_li = document.querySelectorAll("li");
+    all_li.forEach((item) => {
+      if (item.classList.contains("selected")) {
+        item.classList.remove("selected");
+      }
+    });
+
+    li.classList.add("selected");
   });
 
   li.appendChild(a);

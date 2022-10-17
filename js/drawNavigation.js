@@ -9,6 +9,14 @@ function createNavItem({ name, url }, drawContentCallback) {
 
   a.addEventListener("click", (e) => {
     drawContentCallback(e.target.url);
+    const all_li = document.querySelectorAll("li");
+    all_li.forEach((item) => {
+      if (item.classList.contains("selected")) {
+        item.classList.remove("selected");
+      }
+    });
+
+    li.classList.add("selected");
   });
 
   li.appendChild(a);

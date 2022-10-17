@@ -38,9 +38,3 @@ function drawChainInfo(pokemon_names) {
   );
 }
 
-// fetchData(`${default_url}/pokemon/${name}`, (pokemon) => {
-//   chain_pics.innerHTML += ` <div class="big-pokemon-pic-container">
-//       <h3 style="color:white; text-align: center">${pokemon.name}</h3>
-//       <img class ="big-pokemon-pic" src = ${pokemon.sprites.front_default} />
-//     </div>`;
-// });

@@ -37,22 +37,23 @@ show_all_regions_btn.addEventListener("click", () => {
 
 const show_all_types_btn = document.querySelector(".show-all-types");
 
+function showAllTypes(url) {
+  content_info.innerHTML = "";
+  fetchData(url, ({ pokemon }) => {
+    pokemon.forEach((item, i) => {
+      content_info.innerHTML += `<h4>${i}) ${item.pokemon.name}</h4>`;
+    });
+  });
+}
+
 show_all_types_btn.addEventListener("click", () => {
   navigation_title.innerHTML = "All types";
   content_info.innerHTML = "";
-  drawNavigation(`${default_url}/type/`, createNavItem, (url) => {
-    content_info.innerHTML = "";
-    fetchData(url, ({ pokemon }) => {
-      pokemon.forEach((item, i) => {
-        content_info.innerHTML += `<h4>${i}) ${item.pokemon.name}</h4>`;
-      });
-    });
-  });
+  showAllTypes(`${default_url}/type/1`);
+  drawNavigation(`${default_url}/type/`, createNavItem, showAllTypes);
 
   pagination.innerHTML = "";
 });
 
+getLocalStorage();
 showPokemons();
-
-// fetchData("https://pokeapi.co/api/v2/type", () => {});
-fetchData("https://pokeapi.co/api/v2/type/2", () => {});

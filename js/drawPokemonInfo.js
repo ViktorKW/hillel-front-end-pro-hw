@@ -56,8 +56,40 @@ function drawPokemonInfo(url) {
           </li>
         </ul>
       </div>
+      <button class = "favorite-btn"></button>
     </div>`;
-
     content_info.innerHTML = info;
+    createFavoriteButton(pokemon.name);
   });
+}
+
+function addFavStyleBtn(favorite_btn) {
+  favorite_btn.innerHTML = "Add To Favorites";
+  favorite_btn.classList.add("blue-btn");
+  favorite_btn.classList.remove("pink-btn");
+}
+
+function removeFavStyleBtn(favorite_btn) {
+  favorite_btn.innerHTML = "Remove From Favorites";
+  favorite_btn.classList.add("pink-btn");
+  favorite_btn.classList.remove("blue-btn");
+}
+
+function createFavoriteButton(pokemon_name) {
+  const favorite_btn = document.querySelector(".favorite-btn");
+
+  favorite_btn.addEventListener("click", (e) => {
+    if (favorite_pokemons.includes(pokemon_name)) {
+      addFavStyleBtn(favorite_btn);
+      removePokemon(pokemon_name);
+    } else {
+      removeFavStyleBtn(favorite_btn);
+      saveNewPokemon(pokemon_name);
+    }
+  });
+  if (favorite_pokemons.includes(pokemon_name)) {
+    removeFavStyleBtn(favorite_btn);
+  } else {
+    addFavStyleBtn(favorite_btn);
+  }
 }

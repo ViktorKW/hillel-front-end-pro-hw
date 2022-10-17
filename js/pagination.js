@@ -20,7 +20,7 @@ function createNextBtn() {
 }
 
 function setItemsCount(key) {
-  fetchData(`${default_url}/pokemon`, (data) => {
+  fetchData(`${default_url}/${key}`, (data) => {
     items_count = data.count;
   });
 }
@@ -61,8 +61,12 @@ function initPagination(key) {
     page_index += 1;
 
     drawNavigationByKey(key);
-
-    if (page_index * page_size >= items_count) {
+    console.log(
+      `page_index: ${page_index}, page_size: ${page_size}, items_count: ${items_count}\n page_index*page_size: ${
+        page_index * page_size
+      } >= items_count - page_size ${items_count - page_size}`
+    );
+    if (page_index * page_size >= items_count - page_size) {
       next_btn.disabled = true;
       prev_btn.disabled = false;
     } else {

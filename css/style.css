@@ -71,6 +71,11 @@
   font-size: 16px;
 }
 
+a {
+  text-decoration: none;
+  white-space: nowrap;
+}
+
 .pagination {
   margin-top: 10px;
   display: flex;
@@ -117,4 +122,20 @@
 
 .pokemon-stats-list li {
   font-size: 20px;
+}
+
+.selected {
+  background-color: #feca1b;
+}
+
+.favorite-btn {
+  margin-top: 5px;
+  padding: 5px;
+}
+
+.pink-btn {
+  background-color: pink;
+}
+.blue-btn {
+  background-color: aqua;
 }
