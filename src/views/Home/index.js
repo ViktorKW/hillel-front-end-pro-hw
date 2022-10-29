@@ -1,10 +1,9 @@
-import Chart from "../../components/Chart";
 import Table from "../../components/Table";
 
 const Home = () => {
   return `<home>
             ${Table()}
-            ${Chart()}
+            <canvas id="myChart" width="400" height="400"></canvas>
           </home>`;
 };
 
