@@ -2,4 +2,3 @@
 .idea
 /public
 package-lock.json
-.env

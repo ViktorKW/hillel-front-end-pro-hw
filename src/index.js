@@ -1,6 +1,9 @@
-import { api } from "./helpers/api";
+import { handleLocation, handleRoute } from "./helpers/router";
 import "./styles/all.scss";
+handleLocation();
 
-api("products", (data) => {
-  console.log(data);
+document.addEventListener("click", (e) => {
+  if (e.target.dataset.link === "") {
+    handleRoute(e);
+  }
 });
