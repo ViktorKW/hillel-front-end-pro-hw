@@ -1,4 +1,4 @@
-![alt text](https://ibb.co/9hDgpzb)
+![alt text](https://i.ibb.co/f9gFXBk/Screenshot-from-2022-11-09-17-21-22.png)
 Переведите ваше todo на React. API запросы можно не использовать, работать только с массивом обьектов в js.
 
 При загрузке страницы нужно вывести список всех todos.
