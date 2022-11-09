@@ -1,9 +1,14 @@
 .todo-item {
-  background-color: blue;
+  color: white;
+  display: flex;
+  flex-direction: row;
 
   .todo-description {
     padding: 20px;
-    color: white;
     font-size: 30px;
+    width: 100%;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }

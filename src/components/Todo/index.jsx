@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useState, useEffect } from "react";
 import TodoForm from "./components/TodoForm";
 import TodoList from "./components/TodoList";
@@ -22,11 +23,29 @@ function Todo() {
     setTodos([todo, ...todos]);
   }
 
+  function toggleTodo(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return {
+            ...todo,
+            state: !todo.state,
+          };
+        }
+        return todo;
+      })
+    );
+  }
+
+  function removeTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
+
   return (
-    <div>
+    <div className="todo">
       <h1>Todo</h1>
       <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
     </div>
   );
 }

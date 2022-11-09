@@ -1,3 +1,4 @@
+import "./style.scss";
 import React, { useState } from "react";
 
 function TodoForm({ addTodo }) {
@@ -20,13 +21,14 @@ function TodoForm({ addTodo }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form class="todo-form" onSubmit={handleSubmit}>
       <input
+        class="todo-input"
         placeholder="Add a todo"
         value={todo.description}
         onChange={handleChange}
       ></input>
-      <button type="submit">Button</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }

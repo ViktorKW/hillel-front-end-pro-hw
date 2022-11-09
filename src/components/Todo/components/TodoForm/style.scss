@@ -1,0 +1,11 @@
+.todo-form {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 10px;
+  .todo-input {
+    font-size: 20px;
+    padding: 30px;
+    width: 100%;
+  }
+}
