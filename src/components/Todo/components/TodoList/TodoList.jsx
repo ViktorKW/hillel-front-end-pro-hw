@@ -1,10 +1,10 @@
-import "./style.scss";
-import React from "react";
-import TodoItem from "../TodoItem/TodoItem";
+import './style.scss';
+import React from 'react';
+import TodoItem from '../TodoItem/TodoItem';
 
 function TodoList({ todos, toggleTodo, removeTodo }) {
   return (
-    <ul class="todo-list">
+    <ul class='todo-list'>
       {todos.map((todo) => (
         <TodoItem
           key={todo.id}

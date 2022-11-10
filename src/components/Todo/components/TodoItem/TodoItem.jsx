@@ -1,20 +1,20 @@
-import React from "react";
-import "./style.scss";
+import React from 'react';
+import './style.scss';
 function TodoItem({ todo, toggleTodo, removeTodo }) {
   function handleToggleStateClick() {
     toggleTodo(todo.id);
-    console.log("toggled");
+    console.log('toggled');
   }
 
   function handleRemoveClick() {
     removeTodo(todo.id);
   }
   return (
-    <li className="todo-item">
+    <li className='todo-item'>
       <p
-        className="todo-description"
+        className='todo-description'
         style={{
-          backgroundColor: todo.state ? "green" : "blue",
+          backgroundColor: todo.state ? 'green' : 'blue',
         }}
         onClick={handleToggleStateClick}
       >

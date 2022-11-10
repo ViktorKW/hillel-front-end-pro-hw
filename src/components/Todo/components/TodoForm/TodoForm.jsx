@@ -1,10 +1,10 @@
-import "./style.scss";
-import React, { useState } from "react";
+import './style.scss';
+import React, { useState } from 'react';
 
 function TodoForm({ addTodo }) {
   const [todo, setTodo] = useState({
-    id: "",
-    description: "",
+    id: '',
+    description: '',
     state: false,
   });
 
@@ -16,19 +16,19 @@ function TodoForm({ addTodo }) {
     e.preventDefault();
     if (todo.description.trim()) {
       addTodo({ ...todo, id: new Date().valueOf() });
-      setTodo({ ...todo, description: "" });
+      setTodo({ ...todo, description: '' });
     }
   }
 
   return (
-    <form class="todo-form" onSubmit={handleSubmit}>
+    <form class='todo-form' onSubmit={handleSubmit}>
       <input
-        class="todo-input"
-        placeholder="Add a todo"
+        class='todo-input'
+        placeholder='Add a todo'
         value={todo.description}
         onChange={handleChange}
       ></input>
-      <button type="submit">Submit</button>
+      <button type='submit'>Submit</button>
     </form>
   );
 }
