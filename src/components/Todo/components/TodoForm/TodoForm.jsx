@@ -3,9 +3,7 @@ import React, { useState } from 'react';
 
 function TodoForm({ addTodo }) {
   const [todo, setTodo] = useState({
-    id: '',
     description: '',
-    state: false,
   });
 
   function handleChange(e) {
@@ -15,15 +13,15 @@ function TodoForm({ addTodo }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (todo.description.trim()) {
-      addTodo({ ...todo, id: new Date().valueOf() });
+      addTodo({ ...todo, id: new Date().valueOf(), state: false });
       setTodo({ ...todo, description: '' });
     }
   }
 
   return (
-    <form class='todo-form' onSubmit={handleSubmit}>
+    <form className='todo-form' onSubmit={handleSubmit}>
       <input
-        class='todo-input'
+        className='todo-input'
         placeholder='Add a todo'
         value={todo.description}
         onChange={handleChange}
