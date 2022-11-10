@@ -1,7 +1,7 @@
 import "./style.scss";
 import React, { useState, useEffect } from "react";
-import TodoForm from "./components/TodoForm";
-import TodoList from "./components/TodoList";
+import TodoForm from "./components/TodoForm/TodoForm";
+import TodoList from "./components/TodoList/TodoList";
 
 const LOCAL_STORAGE_KEY = "react-todo-list-todos";
 
