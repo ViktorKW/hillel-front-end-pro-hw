@@ -3,7 +3,6 @@ import './style.scss';
 function TodoItem({ todo, toggleTodo, removeTodo }) {
   function handleToggleStateClick() {
     toggleTodo(todo.id);
-    console.log('toggled');
   }
 
   function handleRemoveClick() {
