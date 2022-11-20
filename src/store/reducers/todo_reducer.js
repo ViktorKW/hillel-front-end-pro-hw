@@ -12,7 +12,6 @@ const initialState = {
 export default function todosReducer(state = initialState, { type, payload }) {
   switch (type) {
     case ADD_TODO:
-      console.log(`state: ${state}, payload: ${payload}`);
       return { ...state, todos: [...state.todos, payload] };
     case ADD_TODOS:
       return { ...state, todos: [...state.todos, ...payload] };
