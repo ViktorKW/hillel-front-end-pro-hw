@@ -2,19 +2,21 @@ import './style.scss';
 import React, { useState } from 'react';
 
 function TodoForm({ addTodo }) {
-  const [todo, setTodo] = useState({
-    description: '',
-  });
+  const [description, setDescription] = useState('');
 
   function handleChange(e) {
-    setTodo({ ...todo, description: e.target.value });
+    setDescription(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (todo.description.trim()) {
-      addTodo({ ...todo, id: new Date().valueOf(), state: false });
-      setTodo({ ...todo, description: '' });
+    if (description.trim()) {
+      addTodo({
+        id: new Date().valueOf(),
+        description: description,
+        state: false,
+      });
+      setDescription('');
     }
   }
 
@@ -23,7 +25,7 @@ function TodoForm({ addTodo }) {
       <input
         className='todo-input'
         placeholder='Add a todo'
-        value={todo.description}
+        value={description}
         onChange={handleChange}
       ></input>
       <button type='submit'>Submit</button>

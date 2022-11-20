@@ -1,17 +1,25 @@
 import './style.scss';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addTodoAction,
+  addTodosAction,
+  toggleTodoAction,
+  removeTodoAction,
+} from '../../store/actions/todo_actions';
 
-const LOCAL_STORAGE_KEY = 'react-todo-list-todos';
+const LOCAL_STORAGE_KEY = 'todos';
 
 function Todo() {
-  const [todos, setTodos] = useState([]);
+  const todos = useSelector((state) => state.todos);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
     if (storageTodos) {
-      setTodos(storageTodos);
+      dispatch(addTodosAction(storageTodos));
     }
   }, []);
 
@@ -20,25 +28,27 @@ function Todo() {
   }, [todos]);
 
   function addTodo(todo) {
-    setTodos([todo, ...todos]);
+    dispatch(addTodoAction(todo));
   }
 
   function toggleTodo(id) {
-    setTodos(
-      todos.map((todo) => {
-        if (todo.id === id) {
-          return {
-            ...todo,
-            state: !todo.state,
-          };
-        }
-        return todo;
-      })
+    dispatch(
+      toggleTodoAction(
+        todos.map((todo) => {
+          if (todo.id === id) {
+            return {
+              ...todo,
+              state: !todo.state,
+            };
+          }
+          return todo;
+        })
+      )
     );
   }
 
   function removeTodo(id) {
-    setTodos(todos.filter((todo) => todo.id !== id));
+    dispatch(removeTodoAction(todos.filter((todo) => todo.id !== id)));
   }
 
   return (
