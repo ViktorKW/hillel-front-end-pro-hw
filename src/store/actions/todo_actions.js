@@ -30,3 +30,7 @@ export function toggleTodoAction(payload) {
     payload,
   };
 }
+
+export function getTodosRequestAction() {
+  return function () {};
+}
