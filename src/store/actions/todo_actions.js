@@ -17,16 +17,16 @@ export function addTodosAction(payload) {
   };
 }
 
-export function removeTodoAction(payload) {
+export function removeTodoAction(id) {
   return {
     type: REMOVE_TODO,
-    payload,
+    payload: id,
   };
 }
 
-export function toggleTodoAction(payload) {
+export function toggleTodoAction(id) {
   return {
     type: TOGGLE_TODO,
-    payload,
+    payload: id,
   };
 }

@@ -32,23 +32,11 @@ function Todo() {
   }
 
   function toggleTodo(id) {
-    dispatch(
-      toggleTodoAction(
-        todos.map((todo) => {
-          if (todo.id === id) {
-            return {
-              ...todo,
-              state: !todo.state,
-            };
-          }
-          return todo;
-        })
-      )
-    );
+    dispatch(toggleTodoAction(id));
   }
 
   function removeTodo(id) {
-    dispatch(removeTodoAction(todos.filter((todo) => todo.id !== id)));
+    dispatch(removeTodoAction(id));
   }
 
   return (
