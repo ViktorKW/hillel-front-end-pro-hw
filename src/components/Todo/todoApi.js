@@ -25,7 +25,6 @@ export async function removeTodo(id) {
 }
 
 export async function updateTodo(todo) {
-  console.log('Toggle todo OBJ', todo);
   const res = await fetch(`${TODO_URL}/${todo.id}`, {
     method: 'PUT',
     body: JSON.stringify(todo),

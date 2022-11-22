@@ -10,9 +10,6 @@ const initialState = {
 };
 
 export default function todosReducer(state = initialState, { type, payload }) {
-  console.log(state);
-  console.log(type);
-  console.log(payload);
   switch (type) {
     case ADD_TODO:
       return { ...state, todos: [...state.todos, payload] };
