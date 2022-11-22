@@ -2,21 +2,21 @@ import './style.scss';
 import React, { useState } from 'react';
 
 function TodoForm({ addTodo }) {
-  const [description, setDescription] = useState('');
+  const [task, setTask] = useState('');
 
   function handleChange(e) {
-    setDescription(e.target.value);
+    setTask(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (description.trim()) {
+    if (task.trim()) {
       addTodo({
         id: new Date().valueOf(),
-        description: description,
-        state: false,
+        task: task,
+        complited: false,
       });
-      setDescription('');
+      setTask('');
     }
   }
 
@@ -25,7 +25,7 @@ function TodoForm({ addTodo }) {
       <input
         className='todo-input'
         placeholder='Add a todo'
-        value={description}
+        value={task}
         onChange={handleChange}
       ></input>
       <button type='submit'>Submit</button>

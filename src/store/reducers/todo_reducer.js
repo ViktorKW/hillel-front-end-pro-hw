@@ -1,6 +1,6 @@
 import {
   ADD_TODO,
-  ADD_TODOS,
+  INIT_TODOS,
   TOGGLE_TODO,
   REMOVE_TODO,
 } from '../actions/todo_actions';
@@ -10,11 +10,14 @@ const initialState = {
 };
 
 export default function todosReducer(state = initialState, { type, payload }) {
+  console.log(state);
+  console.log(type);
+  console.log(payload);
   switch (type) {
     case ADD_TODO:
       return { ...state, todos: [...state.todos, payload] };
-    case ADD_TODOS:
-      return { ...state, todos: [...state.todos, ...payload] };
+    case INIT_TODOS:
+      return { ...state, todos: [...payload] };
     case TOGGLE_TODO:
       return {
         ...state,
@@ -22,7 +25,7 @@ export default function todosReducer(state = initialState, { type, payload }) {
           if (todo.id === payload) {
             return {
               ...todo,
-              state: !todo.state,
+              complited: !todo.complited,
             };
           }
           return todo;

@@ -4,10 +4,10 @@ import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-  addTodoAction,
-  addTodosAction,
-  toggleTodoAction,
-  removeTodoAction,
+  getTodosRequestAction,
+  addTodoRequestAction,
+  removeTodoRequestAction,
+  toggleTodoRequestAction,
 } from '../../store/actions/todo_actions';
 
 const LOCAL_STORAGE_KEY = 'todos';
@@ -17,26 +17,19 @@ function Todo() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const storageTodos = JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY));
-    if (storageTodos) {
-      dispatch(addTodosAction(storageTodos));
-    }
+    dispatch(getTodosRequestAction());
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todos));
-  }, [todos]);
-
   function addTodo(todo) {
-    dispatch(addTodoAction(todo));
+    dispatch(addTodoRequestAction(todo));
   }
 
   function toggleTodo(id) {
-    dispatch(toggleTodoAction(id));
+    dispatch(toggleTodoRequestAction(id));
   }
 
   function removeTodo(id) {
-    dispatch(removeTodoAction(id));
+    dispatch(removeTodoRequestAction(id));
   }
 
   return (

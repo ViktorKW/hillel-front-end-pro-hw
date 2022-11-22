@@ -13,11 +13,11 @@ function TodoItem({ todo, toggleTodo, removeTodo }) {
       <p
         className='todo-description'
         style={{
-          backgroundColor: todo.state ? 'green' : 'blue',
+          backgroundColor: todo.complited ? 'green' : 'blue',
         }}
         onClick={handleToggleStateClick}
       >
-        {todo.description}
+        {todo.task}
       </p>
       <button onClick={handleRemoveClick}>Delete</button>
     </li>
