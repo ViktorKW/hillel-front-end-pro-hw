@@ -1,11 +1,11 @@
 .todo-item {
-  color: white;
   display: flex;
   flex-direction: row;
-
   .todo-description {
     padding: 20px;
     font-size: 30px;
+    color: white;
+    border-radius: 25px;
     width: 100%;
     &:hover {
       cursor: pointer;

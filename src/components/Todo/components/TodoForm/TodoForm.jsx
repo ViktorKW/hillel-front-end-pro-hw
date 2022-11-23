@@ -1,5 +1,6 @@
 import './style.scss';
 import React, { useState } from 'react';
+import { TextField, Button } from '@mui/material';
 
 function TodoForm({ addTodo }) {
   const [task, setTask] = useState('');
@@ -22,13 +23,16 @@ function TodoForm({ addTodo }) {
 
   return (
     <form className='todo-form' onSubmit={handleSubmit}>
-      <input
-        className='todo-input'
-        placeholder='Add a todo'
+      <TextField
+        fullWidth
+        label='Add a todo'
+        variant='filled'
         value={task}
         onChange={handleChange}
-      ></input>
-      <button type='submit'>Submit</button>
+      ></TextField>
+      <Button type='submit' variant='contained'>
+        Submit
+      </Button>
     </form>
   );
 }
