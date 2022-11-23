@@ -1,4 +1,6 @@
 import React from 'react';
+import { Button, ListItemButton, ListItemText } from '@mui/material';
+
 import './style.scss';
 function TodoItem({ todo, toggleTodo, removeTodo }) {
   function handleToggleStateClick() {
@@ -9,8 +11,8 @@ function TodoItem({ todo, toggleTodo, removeTodo }) {
     removeTodo(todo.id);
   }
   return (
-    <li className='todo-item'>
-      <p
+    <ListItemButton className='todo-item'>
+      <ListItemText
         className='todo-description'
         style={{
           backgroundColor: todo.complited ? 'green' : 'blue',
@@ -18,9 +20,14 @@ function TodoItem({ todo, toggleTodo, removeTodo }) {
         onClick={handleToggleStateClick}
       >
         {todo.task}
-      </p>
-      <button onClick={handleRemoveClick}>Delete</button>
-    </li>
+      </ListItemText>
+
+      <canvas className='empty-space' width={'10px'} height={'0px'}></canvas>
+
+      <Button variant='contained' onClick={handleRemoveClick}>
+        Delete
+      </Button>
+    </ListItemButton>
   );
 }
 
