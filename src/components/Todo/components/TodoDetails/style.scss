@@ -1,0 +1,13 @@
+.todo-details {
+  .todo-details-form {
+    display: flex;
+    flex-direction: column;
+
+    .todo-form-data {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      column-gap: 10px;
+    }
+  }
+}

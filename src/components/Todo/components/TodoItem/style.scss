@@ -4,11 +4,16 @@
   .todo-description {
     padding: 20px;
     font-size: 30px;
-    color: white;
     border-radius: 25px;
     width: 100%;
+    text-decoration: none;
+    color: inherit;
+
     &:hover {
       cursor: pointer;
+    }
+    &:first-letter {
+      text-transform: uppercase;
     }
   }
 }

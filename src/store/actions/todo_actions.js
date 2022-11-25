@@ -3,12 +3,21 @@ import {
   removeTodo,
   getTodos,
   updateTodo,
+  getTodo,
 } from '../../components/Todo/todoApi';
 
 export const ADD_TODO = '[TODO] add todo';
 export const INIT_TODOS = '[TODO] add todos';
 export const REMOVE_TODO = '[TODO] remove todo';
 export const TOGGLE_TODO = '[TODO] toggle todo';
+export const UPDATE_TODO = '[TODO] update todo';
+
+export function updateTodoAction(todo) {
+  return {
+    type: UPDATE_TODO,
+    payload: todo,
+  };
+}
 
 export function addTodoAction(payload) {
   return {
@@ -67,5 +76,18 @@ export function toggleTodoRequestAction(id) {
     await updateTodo(updatedTodo);
 
     dispatch(toggleTodoAction(updatedTodo.id));
+  };
+}
+
+export function updateTodoRequestAction(todo) {
+  return async function (dispatch) {
+    await updateTodo(todo);
+    dispatch(updateTodoAction(todo));
+  };
+}
+
+export function getTodoRequestAction(id) {
+  return async function () {
+    return getTodo(id);
   };
 }

@@ -24,6 +24,11 @@ export async function removeTodo(id) {
   return res.json();
 }
 
+export async function getTodo(id) {
+  const res = await fetch(`${TODO_URL}/${id}`);
+  return res.json();
+}
+
 export async function updateTodo(todo) {
   const res = await fetch(`${TODO_URL}/${todo.id}`, {
     method: 'PUT',

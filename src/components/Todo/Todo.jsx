@@ -34,7 +34,6 @@ function Todo() {
 
   return (
     <div className='todo'>
-      <h1>Todo</h1>
       <TodoForm addTodo={addTodo} />
       <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
     </div>
