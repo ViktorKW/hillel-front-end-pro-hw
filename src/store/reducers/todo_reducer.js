@@ -13,7 +13,7 @@ const initialState = {
 export default function todosReducer(state = initialState, { type, payload }) {
   switch (type) {
     case ADD_TODO:
-      return { ...state, todos: [...state.todos, payload] };
+      return { ...state, todos: [payload, ...state.todos] };
 
     case INIT_TODOS:
       return { ...state, todos: [...payload] };
