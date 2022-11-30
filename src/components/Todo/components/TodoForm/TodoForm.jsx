@@ -1,36 +1,43 @@
 import './style.scss';
-import React, { useState } from 'react';
+import React from 'react';
 import { TextField, Button } from '@mui/material';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 
 function TodoForm({ addTodo }) {
-  const [task, setTask] = useState('');
+  const validationSchema = yup.object({
+    task: yup.string().required(),
+  });
 
-  function handleChange(e) {
-    setTask(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (task.trim()) {
+  const formik = useFormik({
+    initialValues: {
+      task: '',
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values, { resetForm }) => {
       addTodo({
         id: new Date().valueOf(),
-        task: task,
+        task: values.task,
         complited: false,
       });
-      setTask('');
-    }
-  }
+      resetForm();
+    },
+  });
 
   return (
-    <form className='todo-form' onSubmit={handleSubmit}>
+    <form className='todo-form' onSubmit={formik.handleSubmit}>
       <TextField
         fullWidth
         label='Add a todo'
         variant='filled'
-        value={task}
-        onChange={handleChange}
+        id='task'
+        name='task'
+        value={formik.values.task}
+        onChange={formik.handleChange}
+        error={formik.touched.task && Boolean(formik.errors.task)}
       ></TextField>
-      <Button type='submit' variant='contained'>
+
+      <Button color='primary' type='submit' variant='contained'>
         Submit
       </Button>
     </form>

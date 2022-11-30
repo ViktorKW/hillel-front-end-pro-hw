@@ -1,5 +1,7 @@
 import './style.scss';
-import { Button, TextField } from '@mui/material';
+import * as yup from 'yup';
+import { useFormik } from 'formik';
+import { Button, TextField, Checkbox } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -10,56 +12,56 @@ import {
 
 export default function TodoDetails() {
   const { id } = useParams();
-  const [task, setTask] = useState('');
-  const [complited, setComplited] = useState(true);
+  const [todo, setTodo] = useState({ task: '', complited: false });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
     async function init() {
       const todoInfo = await dispatch(getTodoRequestAction(id));
-      setTask(todoInfo.task);
-      setComplited(todoInfo.complited);
+      setTodo(todoInfo);
     }
     init();
   }, [id]);
 
-  function onChangeTask(event) {
-    setTask(event.target.value);
-  }
+  const validationSchema = yup.object({
+    task: yup.string().required(),
+  });
 
-  function onChangeComplited(event) {
-    setComplited(event.target.checked);
-  }
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (task.trim()) {
-      const edited_todo = {
-        id: id,
-        task: task,
-        complited: complited,
-      };
-      dispatch(updateTodoRequestAction(edited_todo));
-      navigate(-1);
-    }
-  }
+  const formik = useFormik({
+    initialValues: todo,
+    validationSchema: validationSchema,
+    enableReinitialize: true,
+    onSubmit: (values) => {
+      dispatch(
+        updateTodoRequestAction({
+          id: id,
+          task: values.task,
+          complited: values.complited,
+        })
+      );
+      navigate('/todos');
+    },
+  });
+
   return (
     <div className='todo-details'>
       <h2>Edit todo #{id}</h2>
       <br />
-      <form className='todo-details-form' onSubmit={handleSubmit}>
+      <form className='todo-details-form' onSubmit={formik.handleSubmit}>
         <div className='todo-form-data'>
           <TextField
             label='task'
             variant='filled'
-            value={task}
-            onChange={onChangeTask}
-            required
+            value={formik.values?.task}
+            name='task'
+            onChange={formik.handleChange}
+            error={formik.touched.task && Boolean(formik.errors.task)}
           />
-          <input
-            type={'checkbox'}
-            checked={complited}
-            onChange={onChangeComplited}
+          <Checkbox
+            name='complited'
+            checked={formik.values?.complited}
+            onChange={formik.handleChange}
           />
         </div>
         <canvas height={'5px'}></canvas>
@@ -67,7 +69,7 @@ export default function TodoDetails() {
           <Button type='submit' variant='contained'>
             Submit
           </Button>
-          <Button onClick={() => navigate(-1)}>Back</Button>
+          <Button onClick={() => navigate('/todos')}>Back</Button>
         </div>
       </form>
     </div>
