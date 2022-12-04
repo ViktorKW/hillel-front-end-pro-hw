@@ -1,12 +1,18 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const postsApi = axios.create({
-  baseURL: 'http://localhost:3004/posts',
-});
+const POSTS_URL = 'http://localhost:3004/posts';
 
-export const fetchAllPosts = createAsyncThunk('posts/fetchPosts', async () => {
-  const response = await postsApi.get();
+export const fetchAllPosts = createAsyncThunk(
+  'posts/fetchAllPosts',
+  async () => {
+    const response = await axios.get(POSTS_URL);
+    return response.data;
+  }
+);
+
+export const addNewPost = createAsyncThunk('posts/addNewPost', async (item) => {
+  const response = await axios.post(POSTS_URL, item);
   return response.data;
 });
 
@@ -19,10 +25,14 @@ export const postsSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchAllPosts.fulfilled, (state, action) => {
-      state.posts = action.payload;
-      console.log(state.posts);
-    });
+    builder
+      .addCase(fetchAllPosts.fulfilled, (state, action) => {
+        state.posts = action.payload;
+      })
+      .addCase(addNewPost.fulfilled, (state, action) => {
+        console.log('Action.payload: ', action.payload);
+        state.posts.push(action.payload);
+      });
   },
 });
 
