@@ -1,9 +1,11 @@
+import './style.scss';
 import React from 'react';
 import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
-import AllPosts from './screen/AllPosts/AllPosts';
-import CreateUpdatePost from './screen/CreareUpdatePost/CreateUpdatePost';
+import Posts from './components/Posts/Posts';
+import AddPostForm from './components/Posts/AddPostForm';
+import EditPostForm from './components/Posts/EditPostForm';
 
 export default function App() {
   return (
@@ -11,8 +13,11 @@ export default function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route index element={<AllPosts />} />
-          <Route path='post' element={<CreateUpdatePost />} />
+          <Route index element={<Posts />} />
+          <Route path='posts'>
+            <Route path='add' element={<AddPostForm />} />
+            <Route path='edit/:id' element={<EditPostForm />} />
+          </Route>
         </Routes>
         <Footer />
       </BrowserRouter>
