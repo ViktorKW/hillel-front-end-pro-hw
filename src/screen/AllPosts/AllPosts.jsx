@@ -1,12 +1,15 @@
 import { Button } from '@mui/material';
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import Posts from '../../components/Posts/Posts';
 
 export default function AllPosts() {
   return (
     <div>
-      AllPosts
-      <Button onClick={() => {}}>Add Post</Button>
+      <div>
+        <h5>Posts Page</h5>
+        <Button>Add Posts</Button>
+      </div>
+      <Posts />
     </div>
   );
 }
