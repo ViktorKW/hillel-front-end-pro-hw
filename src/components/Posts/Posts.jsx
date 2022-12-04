@@ -1,18 +1,20 @@
-import React, { useEffect } from 'react';
+import './style.scss';
+import React from 'react';
 import { Button } from '@mui/material';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchAllPosts } from '../../store/posts/postsSlice';
+
+import { Link } from 'react-router-dom';
 import PostsList from './PostsList';
 
 export default function Posts() {
-  const posts = useSelector((state) => state.posts.posts);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchAllPosts());
-  }, []);
   return (
-    <div>
-      <PostsList posts={posts} />
+    <div className='posts-page'>
+      <div>
+        <h5>Posts Page</h5>
+        <Link className='link-btn-text' to='posts/add'>
+          <Button>Add Posts</Button>
+        </Link>
+      </div>
+      <PostsList />
     </div>
   );
 }
