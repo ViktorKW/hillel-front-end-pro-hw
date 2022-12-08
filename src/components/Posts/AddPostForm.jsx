@@ -1,10 +1,10 @@
 import React from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
-import { Button, TextField } from '@mui/material';
+import { Breadcrumbs, Button, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { addNewPost } from '../../store/posts/postsSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function AddPostForm() {
   const dispatch = useDispatch();
@@ -44,55 +44,65 @@ export default function AddPostForm() {
     },
   });
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <h2>ADD ITEM</h2>
-      <TextField
-        fullWidth
-        label='picture url'
-        variant='filled'
-        id='preview'
-        name='preview'
-        value={formik.values.preview}
-        onChange={formik.handleChange}
-        error={formik.touched.preview && Boolean(formik.errors.preview)}
-      ></TextField>
+    <div className='add-post-page'>
+      <Breadcrumbs aria-label='breadcrumb'>
+        <Link underline='hover' color='inherit' to='/'>
+          All Posts
+        </Link>
+        <Typography color='text.primary'>New item</Typography>
+      </Breadcrumbs>
 
-      <TextField
-        fullWidth
-        label='title'
-        variant='filled'
-        id='title'
-        name='title'
-        value={formik.values.title}
-        onChange={formik.handleChange}
-        error={formik.touched.title && Boolean(formik.errors.title)}
-      ></TextField>
+      <form onSubmit={formik.handleSubmit}>
+        <TextField
+          fullWidth
+          label='picture url'
+          variant='filled'
+          id='preview'
+          name='preview'
+          value={formik.values.preview}
+          onChange={formik.handleChange}
+          error={formik.touched.preview && Boolean(formik.errors.preview)}
+        ></TextField>
 
-      <TextField
-        fullWidth
-        label='description'
-        variant='filled'
-        id='description'
-        name='description'
-        value={formik.values.description}
-        onChange={formik.handleChange}
-        error={formik.touched.description && Boolean(formik.errors.description)}
-      ></TextField>
+        <TextField
+          fullWidth
+          label='title'
+          variant='filled'
+          id='title'
+          name='title'
+          value={formik.values.title}
+          onChange={formik.handleChange}
+          error={formik.touched.title && Boolean(formik.errors.title)}
+        ></TextField>
 
-      <TextField
-        fullWidth
-        label='author'
-        variant='filled'
-        id='author'
-        name='author'
-        value={formik.values.author}
-        onChange={formik.handleChange}
-        error={formik.touched.author && Boolean(formik.errors.author)}
-      ></TextField>
+        <TextField
+          fullWidth
+          label='description'
+          variant='filled'
+          id='description'
+          name='description'
+          value={formik.values.description}
+          onChange={formik.handleChange}
+          error={
+            formik.touched.description && Boolean(formik.errors.description)
+          }
+        ></TextField>
 
-      <Button color='primary' type='submit' variant='contained'>
-        Submit
-      </Button>
-    </form>
+        <TextField
+          fullWidth
+          label='author'
+          variant='filled'
+          id='author'
+          name='author'
+          value={formik.values.author}
+          onChange={formik.handleChange}
+          error={formik.touched.author && Boolean(formik.errors.author)}
+        ></TextField>
+
+        <Button color='primary' type='submit' variant='contained'>
+          Submit
+        </Button>
+      </form>
+    </div>
   );
 }
