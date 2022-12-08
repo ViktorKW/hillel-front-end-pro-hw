@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import Posts from './components/Posts/Posts';
 import AddPostForm from './components/Posts/AddPostForm';
 import EditPostForm from './components/Posts/EditPostForm';
+import PostDescription from './components/Posts/PostDescription';
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           <Route path='posts'>
             <Route path='add' element={<AddPostForm />} />
             <Route path='edit/:id' element={<EditPostForm />} />
+            <Route path='view/:id' element={<PostDescription />} />
           </Route>
         </Routes>
         <Footer />
