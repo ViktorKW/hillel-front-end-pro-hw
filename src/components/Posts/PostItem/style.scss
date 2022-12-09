@@ -5,11 +5,15 @@
   overflow-y: hidden;
   flex: 0 0 31%;
 
+  position: relative;
   .buttons-container {
     display: flex;
     flex-direction: row;
-    justify-content: right;
-    border-bottom: 2px solid black;
+    padding: 5px;
+    column-gap: 5px;
+
+    position: absolute;
+    right: 0;
   }
   .image-box {
     width: 100%;
