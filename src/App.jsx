@@ -13,14 +13,17 @@ export default function App() {
     <div className='app'>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route index element={<Posts />} />
-          <Route path='posts'>
-            <Route path='add' element={<AddPostForm />} />
-            <Route path='edit/:id' element={<EditPostForm />} />
-            <Route path='view/:id' element={<PostDescription />} />
-          </Route>
-        </Routes>
+        <div className='main-content'>
+          <Routes>
+            <Route index element={<Posts />} />
+            <Route path='posts'>
+              <Route path='add' element={<AddPostForm />} />
+              <Route path='edit/:id' element={<EditPostForm />} />
+              <Route path='view/:id' element={<PostDescription />} />
+            </Route>
+          </Routes>
+        </div>
+
         <Footer />
       </BrowserRouter>
     </div>

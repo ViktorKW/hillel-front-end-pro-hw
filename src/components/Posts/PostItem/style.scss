@@ -1,5 +1,23 @@
 .post-item {
-  img {
-    max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  overflow-y: hidden;
+  flex: 0 0 31%;
+
+  .buttons-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+    border-bottom: 2px solid black;
+  }
+  .image-box {
+    width: 100%;
+    height: 100%;
+  }
+  .post-info-container {
+    padding: 10px;
+    background-color: #1976d2;
+    color: white;
   }
 }
