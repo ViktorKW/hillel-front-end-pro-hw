@@ -10,7 +10,8 @@ export default function PostCommentsList({ postId }) {
   useEffect(() => {
     dispatch(fetchCommentsByPostId(postId));
   }, [postId]);
-  return (
+
+  const show_comments = (
     <div>
       <h2>PostComments</h2>
       <br />
@@ -21,4 +22,11 @@ export default function PostCommentsList({ postId }) {
       </ul>
     </div>
   );
+  const no_comments = (
+    <div>
+      <h2>No comments</h2>
+    </div>
+  );
+
+  return comments.length > 0 ? show_comments : no_comments;
 }
