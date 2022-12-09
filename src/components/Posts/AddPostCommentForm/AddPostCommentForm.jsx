@@ -1,8 +1,9 @@
+import './style.scss';
 import React from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
-import { addNewComment } from '../../store/comments/commentsSlice';
+import { addNewComment } from '../../../store/comments/commentsSlice';
 import { Button, TextField } from '@mui/material';
 
 export default function AddPostCommentForm({ postId }) {
@@ -28,22 +29,25 @@ export default function AddPostCommentForm({ postId }) {
   });
 
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <h2>ADD Comment ITEM</h2>
-      <TextField
-        fullWidth
-        label='Add some text :D'
-        variant='filled'
-        id='body'
-        name='body'
-        value={formik.values.body}
-        onChange={formik.handleChange}
-        error={formik.touched.body && Boolean(formik.errors.body)}
-      ></TextField>
+    <form className='add-post-comment-form' onSubmit={formik.handleSubmit}>
+      <h2>Add comment:</h2>
+      <br />
+      <div className='add-post-comment'>
+        <TextField
+          fullWidth
+          label='Add some text :D'
+          variant='filled'
+          id='body'
+          name='body'
+          value={formik.values.body}
+          onChange={formik.handleChange}
+          error={formik.touched.body && Boolean(formik.errors.body)}
+        ></TextField>
 
-      <Button color='primary' type='submit' variant='contained'>
-        Submit
-      </Button>
+        <Button color='primary' type='submit' variant='contained'>
+          Submit
+        </Button>
+      </div>
     </form>
   );
 }

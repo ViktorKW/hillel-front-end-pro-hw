@@ -1,29 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import './style.scss';
+import React from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { Breadcrumbs, Button, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { editPost, fetchPost } from '../../store/posts/postsSlice';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { addNewPost } from '../../../store/posts/postsSlice';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function EditPostForm() {
-  const { id } = useParams();
-  const [post, setPost] = useState({
-    preview: '',
-    title: '',
-    description: '',
-    author: '',
-  });
+export default function AddPostForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    async function init() {
-      const post_info = await fetchPost(id);
-      setPost(post_info);
-    }
-    init();
-  }, [id]);
   const validationSchema = yup.object({
     preview: yup
       .string()
@@ -41,23 +28,33 @@ export default function EditPostForm() {
   });
 
   const formik = useFormik({
-    initialValues: post,
+    initialValues: {
+      preview: '',
+      title: '',
+      description: '',
+      author: '',
+    },
     validationSchema: validationSchema,
-    enableReinitialize: true,
     onSubmit: (values) => {
-      dispatch(editPost({ id: id, ...values }));
+      const new_post = {
+        id: new Date().valueOf(),
+        ...values,
+      };
+      dispatch(addNewPost(new_post));
       navigate(-1);
     },
   });
+
   return (
-    <div className='edit-post-page'>
+    <div className='add-post-page'>
       <Breadcrumbs aria-label='breadcrumb'>
         <Link underline='hover' color='inherit' to='/'>
           All Posts
         </Link>
-        <Typography color='text.primary'>{post.title}</Typography>
+        <Typography color='text.primary'>New item</Typography>
       </Breadcrumbs>
-
+      <br />
+      <br />
       <form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth

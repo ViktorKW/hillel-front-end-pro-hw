@@ -1,15 +1,30 @@
-import React from 'react';
+import './style.scss';
+import React, { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 import { Breadcrumbs, Button, TextField, Typography } from '@mui/material';
 import { useDispatch } from 'react-redux';
-import { addNewPost } from '../../store/posts/postsSlice';
-import { Link, useNavigate } from 'react-router-dom';
+import { editPost, fetchPost } from '../../../store/posts/postsSlice';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
-export default function AddPostForm() {
+export default function EditPostForm() {
+  const { id } = useParams();
+  const [post, setPost] = useState({
+    preview: '',
+    title: '',
+    description: '',
+    author: '',
+  });
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    async function init() {
+      const post_info = await fetchPost(id);
+      setPost(post_info);
+    }
+    init();
+  }, [id]);
   const validationSchema = yup.object({
     preview: yup
       .string()
@@ -27,31 +42,24 @@ export default function AddPostForm() {
   });
 
   const formik = useFormik({
-    initialValues: {
-      preview: '',
-      title: '',
-      description: '',
-      author: '',
-    },
+    initialValues: post,
     validationSchema: validationSchema,
+    enableReinitialize: true,
     onSubmit: (values) => {
-      const new_post = {
-        id: new Date().valueOf(),
-        ...values,
-      };
-      dispatch(addNewPost(new_post));
+      dispatch(editPost({ id: id, ...values }));
       navigate(-1);
     },
   });
   return (
-    <div className='add-post-page'>
+    <div className='edit-post-page'>
       <Breadcrumbs aria-label='breadcrumb'>
         <Link underline='hover' color='inherit' to='/'>
           All Posts
         </Link>
-        <Typography color='text.primary'>New item</Typography>
+        <Typography color='text.primary'>{post.title}</Typography>
       </Breadcrumbs>
-
+      <br />
+      <br />
       <form onSubmit={formik.handleSubmit}>
         <TextField
           fullWidth
@@ -98,7 +106,8 @@ export default function AddPostForm() {
           onChange={formik.handleChange}
           error={formik.touched.author && Boolean(formik.errors.author)}
         ></TextField>
-
+        <br />
+        <br />
         <Button color='primary' type='submit' variant='contained'>
           Submit
         </Button>

@@ -4,9 +4,9 @@ import { Route, Routes, BrowserRouter } from 'react-router-dom';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Posts from './components/Posts/Posts';
-import AddPostForm from './components/Posts/AddPostForm';
-import EditPostForm from './components/Posts/EditPostForm';
-import PostDescription from './components/Posts/PostDescription';
+import AddPostForm from './components/Posts/AddPostForm/AddPostForm';
+import EditPostForm from './components/Posts/EditPostForm/EditPostForm';
+import PostDescription from './components/Posts/PostDescription/PostDescription';
 
 export default function App() {
   return (
