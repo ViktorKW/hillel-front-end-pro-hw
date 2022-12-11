@@ -1,4 +1,4 @@
-import './style.scss';
+import './Posts.scss';
 import React from 'react';
 import { Button } from '@mui/material';
 

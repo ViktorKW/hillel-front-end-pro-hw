@@ -1,4 +1,4 @@
-import './style.scss';
+import './CommentForm.scss';
 import React from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addNewComment } from '../../../store/comments/commentsSlice';
 import { Button, TextField } from '@mui/material';
 
-export default function AddPostCommentForm({ postId }) {
+export default function CommentForm({ postId }) {
   const dispatch = useDispatch();
   const validationSchema = yup.object({
     body: yup.string().required('Please type your comment'),

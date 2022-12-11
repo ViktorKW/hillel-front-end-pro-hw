@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCommentsByPostId } from '../../store/comments/commentsSlice';
 import Comment from './Comment/Comment';
 
-export default function PostCommentsList({ postId }) {
+export default function CommentsList({ postId }) {
   const comments = useSelector((state) => state.comments.comments);
   const dispatch = useDispatch();
 

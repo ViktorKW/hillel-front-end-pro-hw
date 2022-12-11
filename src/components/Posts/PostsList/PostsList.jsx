@@ -1,4 +1,4 @@
-import './style.scss';
+import './PostsList.scss';
 import React, { useEffect } from 'react';
 import PostItem from '../PostItem/PostItem';
 import { useSelector, useDispatch } from 'react-redux';

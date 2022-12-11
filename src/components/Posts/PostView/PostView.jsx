@@ -1,12 +1,12 @@
-import './style.scss';
+import './PostView.scss';
 import React, { useEffect, useState } from 'react';
 import { Breadcrumbs, Typography } from '@mui/material';
 import { fetchPost } from '../../../store/posts/postsSlice';
 import { Link, useParams } from 'react-router-dom';
-import PostCommentsList from '../PostCommentsList';
-import AddPostCommentForm from '../AddPostCommentForm/AddPostCommentForm';
+import CommentsList from '../CommentsList';
+import CommentForm from '../CommentForm/CommentForm';
 
-export default function PostDescription() {
+export default function PostView() {
   const { id } = useParams();
   const [post, setPost] = useState({
     preview: '',
@@ -44,12 +44,12 @@ export default function PostDescription() {
       <br />
       <br />
 
-      <PostCommentsList postId={id} />
+      <CommentsList postId={id} />
 
       <br />
       <br />
 
-      <AddPostCommentForm postId={id} />
+      <CommentForm postId={id} />
     </div>
   );
 }
