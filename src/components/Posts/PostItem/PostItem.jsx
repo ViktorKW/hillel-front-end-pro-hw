@@ -3,11 +3,13 @@ import { Button } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box } from '@mui/system';
+
 export default function PostItem({ post }) {
   const edit_post_url = `posts/edit/${post.id}`;
   const view_post_url = `posts/view/${post.id}`;
 
   const mui_button_style = { backgroundColor: 'white' };
+
   return (
     <div className='post-item'>
       <Box component='img' className='image-box' src={post.preview} />

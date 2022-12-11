@@ -22,6 +22,7 @@ export default function PostCommentsList({ postId }) {
       </ul>
     </div>
   );
+
   const no_comments = (
     <div>
       <h2>No comments</h2>
