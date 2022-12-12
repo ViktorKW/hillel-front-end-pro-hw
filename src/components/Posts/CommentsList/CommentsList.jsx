@@ -1,7 +1,8 @@
+import './CommentsList.scss';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCommentsByPostId } from '../../store/comments/commentsSlice';
-import Comment from './Comment/Comment';
+import { fetchCommentsByPostId } from '../../../store/comments/commentsSlice';
+import Comment from '../Comment/Comment';
 
 export default function CommentsList({ postId }) {
   const comments = useSelector((state) => state.comments.comments);
@@ -12,22 +13,25 @@ export default function CommentsList({ postId }) {
   }, [postId]);
 
   const show_comments = (
-    <div>
+    <>
       <h2>PostComments</h2>
       <br />
-      <ul className='post-comments-list'>
+      <ul className='comments-ul'>
         {comments.map((comment) => (
-          <Comment key={comment.id} comment={comment} />
+          <>
+            <Comment key={comment.id} comment={comment} author={'anonymous'} />
+            <br />
+          </>
         ))}
       </ul>
-    </div>
+    </>
   );
 
   const no_comments = (
-    <div>
+    <>
       <h2>No comments</h2>
-    </div>
+    </>
   );
 
-  return comments.length > 0 ? show_comments : no_comments;
+  return <div>{comments.length > 0 ? show_comments : no_comments}</div>;
 }
