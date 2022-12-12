@@ -2,6 +2,7 @@ import { AppBar, Toolbar } from '@mui/material';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 import React from 'react';
 import './style.scss';
+
 export default function Header() {
   return (
     <AppBar position='static'>
