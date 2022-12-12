@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Breadcrumbs, Typography } from '@mui/material';
 import { fetchPost } from '../../../store/posts/postsSlice';
 import { Link, useParams } from 'react-router-dom';
-import CommentsList from '../CommentsList';
+import CommentsList from '../CommentsList/CommentsList';
 import CommentForm from '../CommentForm/CommentForm';
 
 export default function PostView() {
