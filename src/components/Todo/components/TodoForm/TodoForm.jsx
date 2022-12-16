@@ -3,8 +3,12 @@ import React from 'react';
 import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { addTodoRequestAction } from '../../../../store/actions/todo_actions';
 
-function TodoForm({ addTodo }) {
+function TodoForm() {
+  const dispatch = useDispatch();
+
   const validationSchema = yup.object({
     task: yup.string().required(),
   });
@@ -15,11 +19,12 @@ function TodoForm({ addTodo }) {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      addTodo({
+      const new_todo = {
         id: new Date().valueOf(),
         task: values.task,
         complited: false,
-      });
+      };
+      dispatch(addTodoRequestAction(new_todo));
       resetForm();
     },
   });

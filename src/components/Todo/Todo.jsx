@@ -20,22 +20,10 @@ function Todo() {
     dispatch(getTodosRequestAction());
   }, []);
 
-  function addTodo(todo) {
-    dispatch(addTodoRequestAction(todo));
-  }
-
-  function toggleTodo(id) {
-    dispatch(toggleTodoRequestAction(id));
-  }
-
-  function removeTodo(id) {
-    dispatch(removeTodoRequestAction(id));
-  }
-
   return (
     <div className='todo'>
-      <TodoForm addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
+      <TodoForm />
+      <TodoList todos={todos} />
     </div>
   );
 }
