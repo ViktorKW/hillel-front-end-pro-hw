@@ -3,14 +3,7 @@ import React, { useEffect } from 'react';
 import TodoForm from './components/TodoForm/TodoForm';
 import TodoList from './components/TodoList/TodoList';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  getTodosRequestAction,
-  addTodoRequestAction,
-  removeTodoRequestAction,
-  toggleTodoRequestAction,
-} from '../../store/actions/todo_actions';
-
-const LOCAL_STORAGE_KEY = 'todos';
+import { getTodosRequestAction } from '../../store/actions/todo_actions';
 
 function Todo() {
   const todos = useSelector((state) => state.todos);
