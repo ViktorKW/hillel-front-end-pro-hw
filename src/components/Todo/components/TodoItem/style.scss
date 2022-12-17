@@ -11,4 +11,12 @@
       cursor: pointer;
     }
   }
+
+  .active {
+    background-color: green;
+  }
+
+  .inactive {
+    background-color: blue;
+  }
 }

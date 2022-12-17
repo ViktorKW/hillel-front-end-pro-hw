@@ -3,19 +3,15 @@ import './style.scss';
 function TodoItem({ todo, toggleTodo, removeTodo }) {
   function handleToggleStateClick() {
     toggleTodo(todo.id);
-    console.log('toggled');
   }
 
   function handleRemoveClick() {
     removeTodo(todo.id);
   }
   return (
-    <li className='todo-item'>
+    <li className='todo-item' data-testid='todo-item'>
       <p
-        className='todo-description'
-        style={{
-          backgroundColor: todo.state ? 'green' : 'blue',
-        }}
+        className={`todo-description ${todo.state ? 'active' : 'inactive'}`}
         onClick={handleToggleStateClick}
       >
         {todo.description}
