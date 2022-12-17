@@ -17,7 +17,7 @@ function TodoItem({ todo }) {
   }
 
   function handleToggleClick() {
-    dispatch(toggleTodoRequestAction(todo));
+    dispatch(toggleTodoRequestAction(todo.id));
   }
 
   const path = `${todo.id}`;
