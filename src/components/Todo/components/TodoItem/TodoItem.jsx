@@ -9,7 +9,7 @@ function TodoItem({ todo, toggleTodo, removeTodo }) {
     removeTodo(todo.id);
   }
   return (
-    <li className='todo-item' data-testid='todo-item'>
+    <li className='todo-item'>
       <p
         className={`todo-description ${todo.state ? 'active' : 'inactive'}`}
         onClick={handleToggleStateClick}

@@ -4,4 +4,8 @@ import Todo from './components/Todo/Todo';
 import './style.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<Todo />);
+root.render(
+  <>
+    <Todo />
+  </>
+);

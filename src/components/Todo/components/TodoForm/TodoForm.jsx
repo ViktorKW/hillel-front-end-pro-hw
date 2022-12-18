@@ -25,12 +25,15 @@ function TodoForm({ addTodo }) {
   return (
     <form className='todo-form' onSubmit={handleSubmit}>
       <input
+        data-testid='todo-form-input'
         className='todo-input'
         placeholder='Add a todo'
         value={description}
         onChange={handleChange}
       ></input>
-      <button type='submit'>Submit</button>
+      <button type='submit' data-testid='todo-form-submit'>
+        Submit
+      </button>
     </form>
   );
 }
