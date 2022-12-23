@@ -5,12 +5,10 @@ import { Button, TextField, Checkbox } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
-import {
-  getTodoRequestAction,
-  updateTodoRequestAction,
-} from '../../../../store/actions/todo_actions';
+import { updateTodoAsyncThunk } from '../../../store/todos/todosSlice';
+import { getTodo } from '../todoApi';
 
-export default function TodoDetails() {
+export default function TodoView() {
   const { id } = useParams();
   const [todo, setTodo] = useState({ task: '', complited: false });
   const dispatch = useDispatch();
@@ -18,7 +16,7 @@ export default function TodoDetails() {
 
   useEffect(() => {
     async function init() {
-      const todoInfo = await dispatch(getTodoRequestAction(id));
+      const todoInfo = await getTodo(id);
       setTodo(todoInfo);
     }
     init();
@@ -33,13 +31,12 @@ export default function TodoDetails() {
     validationSchema: validationSchema,
     enableReinitialize: true,
     onSubmit: (values) => {
-      dispatch(
-        updateTodoRequestAction({
-          id: id,
-          task: values.task,
-          complited: values.complited,
-        })
-      );
+      const updated_todo = {
+        id: id,
+        task: values.task,
+        complited: values.complited,
+      };
+      dispatch(updateTodoAsyncThunk(updated_todo));
       navigate('/todos');
     },
   });

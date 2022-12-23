@@ -4,7 +4,7 @@ import { TextField, Button } from '@mui/material';
 import { useFormik } from 'formik';
 import * as yup from 'yup';
 import { useDispatch } from 'react-redux';
-import { addTodoRequestAction } from '../../../../store/actions/todo_actions';
+import { addNewTodoAsyncThunk } from '../../../store/todos/todosSlice';
 
 function TodoForm() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function TodoForm() {
         task: values.task,
         complited: false,
       };
-      dispatch(addTodoRequestAction(new_todo));
+      dispatch(addNewTodoAsyncThunk(new_todo));
       resetForm();
     },
   });

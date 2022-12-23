@@ -5,19 +5,24 @@ import './style.scss';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import {
-  removeTodoRequestAction,
-  toggleTodoRequestAction,
-} from '../../../../store/actions/todo_actions';
+  removeTodoAsyncThunk,
+  updateTodoAsyncThunk,
+} from '../../../store/todos/todosSlice';
 
 function TodoItem({ todo }) {
   const dispatch = useDispatch();
 
   function handleRemoveClick() {
-    dispatch(removeTodoRequestAction(todo.id));
+    dispatch(removeTodoAsyncThunk(todo));
   }
 
   function handleToggleClick() {
-    dispatch(toggleTodoRequestAction(todo.id));
+    const updated_todo = {
+      ...todo,
+      complited: !todo.complited,
+    };
+
+    dispatch(updateTodoAsyncThunk(updated_todo));
   }
 
   const path = `${todo.id}`;

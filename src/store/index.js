@@ -1,8 +1,8 @@
-import { createStore, applyMiddleware } from 'redux';
-import thunkMiddleware from 'redux-thunk';
-import todosReducer from './reducers/todo_reducer';
+import { configureStore } from '@reduxjs/toolkit';
+import todosReducer from './todos/todosSlice';
 
-const middlewares = [thunkMiddleware];
-const store = createStore(todosReducer, applyMiddleware(...middlewares));
-
-export default store;
+export const store = configureStore({
+  reducer: {
+    todos: todosReducer,
+  },
+});

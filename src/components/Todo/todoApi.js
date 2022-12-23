@@ -1,11 +1,11 @@
 const TODO_URL = 'http://localhost:3004/todos';
 
-export async function getTodos() {
+export async function getAllTodos() {
   const res = await fetch(TODO_URL);
   return res.json();
 }
 
-export async function createTodo(todo) {
+export async function addNewTodo(todo) {
   const res = await fetch(TODO_URL, {
     method: 'POST',
     body: JSON.stringify(todo),
@@ -16,8 +16,8 @@ export async function createTodo(todo) {
   return res.json();
 }
 
-export async function removeTodo(id) {
-  const res = await fetch(`${TODO_URL}/${id}`, {
+export async function removeTodo(todo) {
+  const res = await fetch(`${TODO_URL}/${todo.id}`, {
     method: 'DELETE',
   });
 
