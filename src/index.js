@@ -5,9 +5,11 @@ import { BrowserRouter } from 'react-router-dom';
 import { setupStore } from './store';
 import App from './App';
 
+const store = setupStore();
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <Provider store={setupStore()}>
+  <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
