@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { updateTodoAsyncThunk } from '../../../store/todos/todosSlice';
-import { getTodo } from '../todoApi';
+import { getTodo } from '../../../store/todos/todoApi';
 
 export default function TodoView() {
   const { id } = useParams();

@@ -1,10 +1,5 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import {
-  addNewTodo,
-  getAllTodos,
-  removeTodo,
-  updateTodo,
-} from '../../components/Todo/todoApi';
+import { addNewTodo, getAllTodos, removeTodo, updateTodo } from './todoApi';
 
 export const getAllTodosAsyncThunk = createAsyncThunk(
   'todos/getAllTodos',
