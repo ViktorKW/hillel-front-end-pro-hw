@@ -1,8 +1,18 @@
 {
   "todos": [
     {
-      "id": 1671825522251,
-      "task": "1asddasdassdaadsdas",
+      "id": 1,
+      "task": "buy milk",
+      "complited": true
+    },
+    {
+      "id": 2,
+      "task": "buy bread",
+      "complited": false
+    },
+    {
+      "id": 3,
+      "task": "buy sugar",
       "complited": false
     }
   ]
