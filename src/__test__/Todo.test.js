@@ -22,7 +22,7 @@ describe('Todo test active and inactive class styles', () => {
 
   const todo_test_description = 'Test class style';
 
-  it('should have inactive class style when initially rendered', async () => {
+  it('should have inactive class style when TodoItem initially rendered', async () => {
     addTodoToDOM(todo_test_description);
 
     const todo_element = screen.getByText(todo_test_description);
@@ -30,7 +30,7 @@ describe('Todo test active and inactive class styles', () => {
     expect(todo_element).not.toHaveClass('active');
   });
 
-  it('should have active class style after click on inactive class style todo', async () => {
+  it('should have active class style after click on inactive class style of TodoItem', async () => {
     const todo_element = screen.getByText(todo_test_description);
     fireEvent.click(todo_element);
 
