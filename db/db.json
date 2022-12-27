@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "description": "buy milk",
+      "state": true
+    },
+    {
+      "id": 2,
+      "description": "buy bread",
+      "state": false
+    },
+    {
+      "id": 3,
+      "description": "buy sugar",
+      "state": false
+    }
+  ]
+}
