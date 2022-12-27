@@ -3,9 +3,15 @@ import React, { useState } from 'react';
 
 function TodoForm({ addTodo }) {
   const [description, setDescription] = useState('');
+  const [isError, setIsError] = useState(false);
 
   function handleChange(e) {
-    setDescription(e.target.value);
+    const value = e.target.value;
+
+    if (value !== ' ') {
+      setDescription(value);
+      setIsError(false);
+    }
   }
 
   function handleSubmit(e) {
@@ -19,6 +25,8 @@ function TodoForm({ addTodo }) {
       addTodo(new_todo);
 
       setDescription('');
+    } else {
+      setIsError(true);
     }
   }
 
@@ -26,12 +34,12 @@ function TodoForm({ addTodo }) {
     <form className='todo-form' onSubmit={handleSubmit}>
       <input
         data-testid='todo-form-input'
-        className='todo-input'
+        className={`todo-input ${isError ? 'error' : ''}`}
         placeholder='Add a todo'
         value={description}
         onChange={handleChange}
       ></input>
-      <button type='submit' data-testid='todo-form-submit'>
+      <button type='submit' data-testid='todo-form-submit' disabled={isError}>
         Submit
       </button>
     </form>
