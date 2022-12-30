@@ -19,19 +19,26 @@ function addTodoTest(description) {
   fireEvent.click(submitButton);
 }
 
+// describe('Todo test async', () => {
+//   it('Test #1', async () => {
+//     const todo = await screen.findByTestId('todo-test-id-1');
+//     expect(todo).toBeInTheDocument();
+//   });
+// });
+
 describe('Todo test active and inactive class styles', () => {
   const todo_test_description = 'Test class style';
 
   it('should have inactive class style when TodoItem initially rendered', async () => {
     addTodoTest(todo_test_description);
 
-    const todo_element = screen.getByText(todo_test_description);
+    const todo_element = await screen.findByText(todo_test_description);
     expect(todo_element).toHaveClass('inactive');
     expect(todo_element).not.toHaveClass('active');
   });
 
   it('should have active class style after click on inactive class style of TodoItem', async () => {
-    const todo_element = screen.getByText(todo_test_description);
+    const todo_element = await screen.findByText(todo_test_description);
     fireEvent.click(todo_element);
 
     expect(todo_element).toHaveClass('active');
