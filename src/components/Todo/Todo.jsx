@@ -13,15 +13,16 @@ function Todo() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    async function init() {
-      const storageTodos = await getAllTodosRequest();
-      if (storageTodos) {
-        setTodos(storageTodos);
-      }
-    }
-
-    init();
+    setAllTodos();
   }, []);
+
+  async function setAllTodos() {
+    const storageTodos = await getAllTodosRequest();
+
+    if (storageTodos) {
+      setTodos(storageTodos);
+    }
+  }
 
   function addTodo(todo) {
     setTodos([todo, ...todos]);
