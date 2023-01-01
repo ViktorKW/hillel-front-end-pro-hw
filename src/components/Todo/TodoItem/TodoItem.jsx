@@ -32,7 +32,7 @@ function TodoItem({ todo }) {
   );
 
   return (
-    <ListItemButton className='todo-item'>
+    <ListItemButton className='todo-item' data-testid='todo-item'>
       <Link className='todo-description' to={path}>
         <ListItemText>{todo.task}</ListItemText>
       </Link>

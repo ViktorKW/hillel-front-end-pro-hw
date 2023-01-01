@@ -37,12 +37,20 @@ function TodoForm() {
         variant='filled'
         id='task'
         name='task'
+        inputProps={{
+          'data-testid': 'todo-form-input',
+        }}
         value={formik.values.task}
         onChange={formik.handleChange}
         error={formik.touched.task && Boolean(formik.errors.task)}
       ></TextField>
 
-      <Button color='primary' type='submit' variant='contained'>
+      <Button
+        color='primary'
+        type='submit'
+        variant='contained'
+        data-testid='todo-form-submit'
+      >
         Submit
       </Button>
     </form>
