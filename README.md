@@ -1,1 +1,1 @@
-This is a storage for my Hillel homework
+This is a storage for my Hillel Front-End Pro homework
